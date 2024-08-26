@@ -19,8 +19,8 @@
 
 نسخه اندروید SmartSpend را دانلود کنید:
 
-<a style="text-align: right;" href="https://github.com/arminamirinasab/SmartSpend/raw/master/android/Smart_Spend_1_1.0.apk">
-<img src="https://github.com/arminamirinasab/SmartSpend/blob/master/android/androidapp.png" alt="دانلود اسمارت اسپند برای اندروید" width="300">
+<a href="https://github.com/arminamirinasab/SmartSpend/raw/master/android/Smart_Spend_1_1.0.apk">
+<img src="https://github.com/arminamirinasab/SmartSpend/blob/master/android/androidapp.png" alt="دانلود اسمارت اسپند برای اندروید" width="200" align="right">
 </a>
 
 ## مشارکت و توسعه
