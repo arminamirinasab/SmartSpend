@@ -19,7 +19,7 @@
 
 نسخه اندروید SmartSpend را دانلود کنید:
 
-[دانلود Smart Spend برای اندروید](https://github.com/arminamirinasab/SmartSpend/raw/master/Smart Spend_1_1.0.apk)
+[![دانلود اسمارت اسپند](https://github.com/arminamirinasab/SmartSpend/blob/master/android/androidapp.png)](https://github.com/arminamirinasab/SmartSpend/raw/master/android/Smart_Spend_1_1.0.apk)
 
 ## مشارکت و توسعه
 
