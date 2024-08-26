@@ -1,0 +1,119 @@
+<html lang="fa-IR" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="اسمارت اسپند یک ابزار مفید است که به شما امکان می‌دهد تا با وارد کردن مبلغی، محصولات قابل خرید را مشاهده کنید. این برنامه به شما درک بهتری از مفهوم هزینه فرصت ارائه می‌دهد." />
+    <title>اسمارت اسپند: ابزار هوشمند برای تحلیل هزینه فرصت</title>
+    <!-- Favicon -->
+    <link rel="icon" href="./favicon-96.png" type="image/png" />
+    <link rel="apple-touch-icon" sizes="96x96" href="./favicon-96.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16.png" />
+    <link rel="manifest" href="./favicon-96.png" />
+    <meta name="msapplication-TileColor" content="#0078d7" />
+    <meta name="msapplication-TileImage" content="./favicon-96.png" />
+    <meta name="theme-color" content="#0078d7" />
+
+    <link rel="stylesheet" href="./css/windows-ui.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- Loading Spinner -->
+    <div id="loader">
+      <div class="app-loader-busy loader-lg animate"></div>
+    </div>
+    <!-- JS Scripts -->
+    <script src="categories.js"></script>
+    <script src="products.js"></script>
+    <script src="./js/main.js"></script>
+    <!-- Top wave effect -->
+    <div class="waves waves-top" style="background-image: url(./css/waves-bg-top.svg)"><br /></div>
+    <!-- Titles -->
+    <div class="titles">
+      <h1>محاسبه‌گر هزینه فرصت</h1>
+      <h2>SmartSpend Calulcator</h2>
+      <!-- Description -->
+      <script>
+        let TitlesDescription = document.createElement("p");
+        TitlesDescription.innerText = `یه مبلغ وارد کن و ببین با اون پول چه چیزایی می‌تونستی بخری! این برنامه با مقایسه بین ${products.length} محصول بهت کمک می‌کنه ارزش واقعی پولتو بفهمی و انتخابای بهتری برای خرید داشته باشی. یه راه خوب برای جلوگیری از خریدای الکی !`;
+        document.querySelector(".titles").appendChild(TitlesDescription);
+      </script>
+    </div>
+    <!-- Calculate Box -->
+    <form class="calculate" method="dialog">
+      <div class="app-input-container">
+        <input class="app-input-text" type="number" pattern="[0-9]*" id="moneyInput" value="10000000" required type="text" placeholder="مبلغ به تومان" />
+      </div>
+      <button onclick="caluclateMoney()" class="app-btn app-btn-primary">
+        <span>محاسبه</span>
+      </button>
+    </form>
+    <!-- Filters Codes -->
+    <div class="filters">
+      <div class="app-select-menu">
+        <span class="app-dropdown-title" data-win-toggle="dropdown" data-win-target="#categoryFilter">همه دسته ها</span>
+        <ul class="app-dropdown-list" id="categoryFilter">
+          <li class="app-dropdown-list-item selected" data-id="all"><span>همه دسته ها</span></li>
+          <script>
+            categories.forEach((element) => {
+              let selectItemLi = document.createElement("li");
+              let selectItemSpan = document.createElement("span");
+              selectItemLi.classList.add("app-dropdown-list-item");
+              selectItemLi.dataset.id = element.id;
+              selectItemSpan.innerText = element.name;
+              selectItemLi.appendChild(selectItemSpan);
+              document.querySelector("#categoryFilter").appendChild(selectItemLi);
+            });
+          </script>
+        </ul>
+      </div>
+
+      <div class="app-select-menu">
+        <span class="app-dropdown-title" data-win-toggle="dropdown" data-win-target="#orderFilter">قیمت از پایین به بالا</span>
+        <ul class="app-dropdown-list" id="orderFilter">
+          <li class="app-dropdown-list-item selected" data-filter="asc"><span>قیمت از پایین به بالا</span></li>
+          <li class="app-dropdown-list-item" data-filter="desc"><span>قیمت از بالا به پایین</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="cards"></div>
+    <br />
+    <br />
+    <br />
+    <p>© طراحی و توسعه اوپن سورس؟ کار خودم، <a href="https://github.com/arminamirinasab/">آرمین امیری نسب</a></p>
+    <p>مشارکت در این پروژه: <a href="https://github.com/arminamirinasab/SmartSpend">Github</a></p>
+
+    <!-- Low money alert -->
+    <div class="app-alert" id="noMoneyModal" data-win-toggle="modal" data-win-target="#noMoneyModal" tabindex="-1">
+      <div class="app-alert-modal" aria-modal="true" role="dialog">
+        <div class="app-alert-header">
+          <h1>پولت خیلی کمه 😶‍🌫️</h1>
+          <div class="app-alert-message">با این پول در این دسته چیزی نمیتونی بخری :)</div>
+        </div>
+        <div class="app-alert-footer">
+          <button class="app-btn app-btn-primary" data-win-toggle="modal" data-win-target="#noMoneyModal">
+            <span>باشه</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- High money alert -->
+    <div class="app-alert" id="veryMoneyModal" data-win-toggle="modal" data-win-target="#veryMoneyModal" tabindex="-1">
+      <div class="app-alert-modal" aria-modal="true" role="dialog">
+        <div class="app-alert-header">
+          <h1>پولت خیلی زیاده 🥸</h1>
+          <div class="app-alert-message">با این پول میتونی بری ماه، اینجا اومدی چیکار؟</div>
+        </div>
+        <div class="app-alert-footer">
+          <button class="app-btn app-btn-primary" data-win-toggle="modal" data-win-target="#veryMoneyModal">
+            <span>باشه</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom wave effect -->
+    <div class="waves waves-bottom" style="background-image: url(./css/waves-bg-bottom.svg)"><br /></div>
+    <script src="./js/windows-ui.min.js"></script>
+  </body>
+</html>
